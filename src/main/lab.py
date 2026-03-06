@@ -59,20 +59,28 @@ def process_data():
     # Query for Monthly Revenue Trend
     # Your task: Write an SQL query to find the total revenue per month.
     
-    print("Total Revenue Per Month:")
+    # print("Total Revenue Per Month:")
+    # cursor.execute("""  
+    #                 SELECT SUM(Amount) as Revenue,  strftime("%Y-%m", TransactionDate) as Month
+    #                 FROM transactions
+    #                 GROUP BY Month
+    #                """)
+
+
+    # Query for Payment Method Popularity
+    # Your task: Write an SQL query to find the popularity of each payment method used in transactions.
+    print("Payment method popularity:")
     cursor.execute("""  
-                    SELECT SUM(Amount) as Revenue,  strftime("%Y-%m", TransactionDate) as Month
+                    SELECT PaymentMethod, COUNT(PaymentMethod) as Times_Used
                     FROM transactions
-                    GROUP BY Month
+                    GROUP BY PaymentMethod
+                    ORDER BY Times_Used DESC
                    """)
+
     
     rows = cursor.fetchall()
     for row in rows:
         print(row)
-
-    # # TO DO:  Query for Payment Method Popularity
-    # # Your task: Write an SQL query to find the popularity of each payment method used in transactions.
-    # cursor.execute("""  Enter your query  """)
 
 
     # # TO DO:  Query for Top 5 Cities with Most Transactions

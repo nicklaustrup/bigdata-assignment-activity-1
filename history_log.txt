@@ -1,0 +1,7 @@
+commit 60075193aac1f1cb1a2010e52fd3e475480c7567
+Author: Nicholas Laustrup <124007393+nicklaustrup@users.noreply.github.com>
+Date:   Fri Mar 6 15:31:45 2026 -0800
+
+    Added Insert, Query 1, Query 2
+
+ 4 files changed, 51 insertions(+), 24 deletions(-)
