@@ -69,23 +69,32 @@ def process_data():
 
     # Query for Payment Method Popularity
     # Your task: Write an SQL query to find the popularity of each payment method used in transactions.
-    print("Payment method popularity:")
+    
+    # print("Payment method popularity:")
+    # cursor.execute("""  
+    #                 SELECT PaymentMethod, COUNT(PaymentMethod) as Times_Used
+    #                 FROM transactions
+    #                 GROUP BY PaymentMethod
+    #                 ORDER BY Times_Used DESC
+    #                """)
+
+
+    # Query for Top 5 Cities with Most Transactions
+    # Your task: Write an SQL query to find the top 5 cities with the most transactions.
+    
+    print("Top 5 cities with most transactions:")
     cursor.execute("""  
-                    SELECT PaymentMethod, COUNT(PaymentMethod) as Times_Used
+                    SELECT City, COUNT(City) as City_Transactions
                     FROM transactions
-                    GROUP BY PaymentMethod
-                    ORDER BY Times_Used DESC
+                    GROUP BY City
+                    ORDER BY City_Transactions DESC
+                    LIMIT 5
                    """)
 
     
     rows = cursor.fetchall()
     for row in rows:
         print(row)
-
-
-    # # TO DO:  Query for Top 5 Cities with Most Transactions
-    # # Your task: Write an SQL query to find the top 5 cities with the most transactions.
-    # cursor.execute("""  Enter your query  """)
 
 
     # # TO DO:  Query for Top 5 High-Spending Customers

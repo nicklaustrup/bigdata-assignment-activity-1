@@ -1,7 +1,7 @@
-commit 60075193aac1f1cb1a2010e52fd3e475480c7567
+commit 1e44dd5f4adb726cfe06063bdf7fd62aa379f795
 Author: Nicholas Laustrup <124007393+nicklaustrup@users.noreply.github.com>
-Date:   Fri Mar 6 15:31:45 2026 -0800
+Date:   Fri Mar 6 15:35:30 2026 -0800
 
-    Added Insert, Query 1, Query 2
+    Added payment method popularity query
 
- 4 files changed, 51 insertions(+), 24 deletions(-)
+ 4 files changed, 22 insertions(+), 7 deletions(-)
