@@ -82,25 +82,30 @@ def process_data():
     # Query for Top 5 Cities with Most Transactions
     # Your task: Write an SQL query to find the top 5 cities with the most transactions.
     
-    print("Top 5 cities with most transactions:")
+    # print("Top 5 cities with most transactions:")
+    # cursor.execute("""  
+    #                 SELECT City, COUNT(City) as City_Transactions
+    #                 FROM transactions
+    #                 GROUP BY City
+    #                 ORDER BY City_Transactions DESC
+    #                 LIMIT 5
+    #                """)
+
+    # Query for Top 5 High-Spending Customers
+    # Your task: Write an SQL query to find the top 5 customers who spent the most in total.
+
+    print("Top 5 high-spending customers:")
     cursor.execute("""  
-                    SELECT City, COUNT(City) as City_Transactions
+                    SELECT CustomerID, SUM(Amount) as Spent
                     FROM transactions
-                    GROUP BY City
-                    ORDER BY City_Transactions DESC
+                    GROUP BY CustomerID
+                    ORDER BY Spent DESC
                     LIMIT 5
                    """)
 
-    
     rows = cursor.fetchall()
     for row in rows:
         print(row)
-
-
-    # # TO DO:  Query for Top 5 High-Spending Customers
-    # # Your task: Write an SQL query to find the top 5 customers who spent the most in total.
-    # cursor.execute("""  Enter your query  """)
-
 
     # # TO DO:  Query for Hadoop vs Spark Related Product Sales
     # # Your task: Write an SQL query to categorize products related to Hadoop and Spark and find their sales.

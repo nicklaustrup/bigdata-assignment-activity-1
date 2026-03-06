@@ -1,7 +1,7 @@
-commit 1e44dd5f4adb726cfe06063bdf7fd62aa379f795
+commit 9d9576c5757e4abb91347e3ba6037a5699fd791b
 Author: Nicholas Laustrup <124007393+nicklaustrup@users.noreply.github.com>
-Date:   Fri Mar 6 15:35:30 2026 -0800
+Date:   Fri Mar 6 15:39:53 2026 -0800
 
-    Added payment method popularity query
+    Added top 5 cities query
 
- 4 files changed, 22 insertions(+), 7 deletions(-)
+ 4 files changed, 22 insertions(+), 13 deletions(-)
