@@ -2,10 +2,13 @@ import pandas as pd
 import sqlite3
 
 def process_data():
+    print("Starting data processing...")
 
     # Loading the transactions data from the CSV file into a pandas DataFrame
     file_path = r"src/data/transactions.csv" 
     df = pd.read_csv(file_path, encoding="utf-8")
+    
+    print("transactions.csv loaded")
     
     # Removing any rows with missing values in the DataFrame (Use dropna or another method)
     df.dropna(inplace=True)  # You can change this to other methods if required
@@ -16,6 +19,8 @@ def process_data():
     # Setting up a connection to SQLite database and create a table if it doesn't exist
     conn = sqlite3.connect("src/data/transactions.db")
     cursor = conn.cursor()
+    
+    print("Database connected")
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS transactions (
@@ -30,44 +35,64 @@ def process_data():
     )
     """)
     
-    # TO DO: Insert data into the database
+    print("Transactions table created")
+    
+    # Insert data into the database
     # Your task: Insert the cleaned DataFrame into the SQLite database. Ensure to replace the table if it already exists.
-    df.to_sql("Write your query")
+    df.to_sql("transactions", con=conn, if_exists='replace')
+
 
     # Example Queries - Write SQL queries based on the instructions below
 
-    # TO DO: Query for Top 5 Most Sold Products
+    # Query for Top 5 Most Sold Products
     # Your task: Write an SQL query to find the top 5 most sold products based on transaction count.
-    cursor.execute("""  Enter your query  """)
+    
+    # print("Top 5 most sold products:")
+    # cursor.execute("""  
+    #                 SELECT Product, COUNT(Product) AS num_sold
+    #                 FROM transactions
+    #                 GROUP BY Product
+    #                 ORDER BY num_sold DESC
+    #                 LIMIT 5
+    #                """)
 
-
-    # TO DO:  Query for Monthly Revenue Trend
+    # Query for Monthly Revenue Trend
     # Your task: Write an SQL query to find the total revenue per month.
-    cursor.execute("""  Enter your query  """)
+    
+    print("Total Revenue Per Month:")
+    cursor.execute("""  
+                    SELECT SUM(Amount) as Revenue,  strftime("%Y-%m", TransactionDate) as Month
+                    FROM transactions
+                    GROUP BY Month
+                   """)
+    
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
 
-    # TO DO:  Query for Payment Method Popularity
-    # Your task: Write an SQL query to find the popularity of each payment method used in transactions.
-    cursor.execute("""  Enter your query  """)
-
-
-    # TO DO:  Query for Top 5 Cities with Most Transactions
-    # Your task: Write an SQL query to find the top 5 cities with the most transactions.
-    cursor.execute("""  Enter your query  """)
-
-
-    # TO DO:  Query for Top 5 High-Spending Customers
-    # Your task: Write an SQL query to find the top 5 customers who spent the most in total.
-    cursor.execute("""  Enter your query  """)
-
-
-    # TO DO:  Query for Hadoop vs Spark Related Product Sales
-    # Your task: Write an SQL query to categorize products related to Hadoop and Spark and find their sales.
-    cursor.execute("""  Enter your query  """)
+    # # TO DO:  Query for Payment Method Popularity
+    # # Your task: Write an SQL query to find the popularity of each payment method used in transactions.
+    # cursor.execute("""  Enter your query  """)
 
 
-    # TO DO:  Query for Top Spending Customers in Each City
-    # Your task: Write an SQL query to find the top spending customer in each city using subqueries.
-    cursor.execute("""  Enter your query  """)
+    # # TO DO:  Query for Top 5 Cities with Most Transactions
+    # # Your task: Write an SQL query to find the top 5 cities with the most transactions.
+    # cursor.execute("""  Enter your query  """)
+
+
+    # # TO DO:  Query for Top 5 High-Spending Customers
+    # # Your task: Write an SQL query to find the top 5 customers who spent the most in total.
+    # cursor.execute("""  Enter your query  """)
+
+
+    # # TO DO:  Query for Hadoop vs Spark Related Product Sales
+    # # Your task: Write an SQL query to categorize products related to Hadoop and Spark and find their sales.
+    # cursor.execute("""  Enter your query  """)
+
+
+    # # TO DO:  Query for Top Spending Customers in Each City
+    # # Your task: Write an SQL query to find the top spending customer in each city using subqueries.
+    # cursor.execute("""  Enter your query  """)
 
 
     # Step 8: Close the connection
