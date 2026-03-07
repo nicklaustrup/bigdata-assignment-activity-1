@@ -1,7 +1,7 @@
-commit c76337fd473fe88a573b4f0ede1e2e2e599f3958
+commit 8e49feb35795ee87a4020ca6e334d13791c2389c
 Author: Nicholas Laustrup <124007393+nicklaustrup@users.noreply.github.com>
-Date:   Fri Mar 6 15:43:55 2026 -0800
+Date:   Fri Mar 6 16:05:29 2026 -0800
 
-    Added top 5 customers query
+    Added Hadoop vs Spark query
 
- 4 files changed, 20 insertions(+), 15 deletions(-)
+ 4 files changed, 43 insertions(+), 16 deletions(-)
