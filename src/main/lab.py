@@ -91,25 +91,52 @@ def process_data():
     #                 LIMIT 5
     #                """)
 
+
     # Query for Top 5 High-Spending Customers
     # Your task: Write an SQL query to find the top 5 customers who spent the most in total.
 
-    print("Top 5 high-spending customers:")
-    cursor.execute("""  
-                    SELECT CustomerID, SUM(Amount) as Spent
-                    FROM transactions
-                    GROUP BY CustomerID
-                    ORDER BY Spent DESC
-                    LIMIT 5
-                   """)
+    # print("Top 5 high-spending customers:")
+    # cursor.execute("""  
+    #                 SELECT CustomerID, SUM(Amount) as Spent
+    #                 FROM transactions
+    #                 GROUP BY CustomerID
+    #                 ORDER BY Spent DESC
+    #                 LIMIT 5
+    #                """)
 
+
+    # Query for Hadoop vs Spark Related Product Sales
+    # Your task: Write an SQL query to categorize products related to Hadoop and Spark and find their sales.
+    
+    print("Hadoop vs Spark sales:")
+    # Option 1
+    # Returns Spark Intro, Spark Advanced, etc
+    # cursor.execute("""  
+    #                 SELECT Product, SUM(Amount) as Total_Sales
+    #                 FROM transactions
+    #                 WHERE Product LIKE '%Hadoop%' OR Product LIKE '%Spark%'
+    #                 GROUP BY Product
+    #                 ORDER BY Total_Sales DESC
+    #                """)
+    
+    # Option 2
+    # Returns Spark and Hadoop
+    cursor.execute("""  
+                SELECT 
+                    CASE
+                        WHEN Product LIKE '%Spark%' THEN 'Spark'
+                        WHEN Product LIKE '%Hadoop%' THEN 'Hadoop'
+                    END AS Product_Category, 
+                    SUM(Amount) as Total_Sales
+                FROM transactions
+                WHERE Product LIKE '%Hadoop%' OR Product LIKE '%Spark%'
+                GROUP BY Product_Category
+                ORDER BY Total_Sales DESC
+                """)
+    
     rows = cursor.fetchall()
     for row in rows:
         print(row)
-
-    # # TO DO:  Query for Hadoop vs Spark Related Product Sales
-    # # Your task: Write an SQL query to categorize products related to Hadoop and Spark and find their sales.
-    # cursor.execute("""  Enter your query  """)
 
 
     # # TO DO:  Query for Top Spending Customers in Each City

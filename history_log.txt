@@ -1,7 +1,7 @@
-commit 9d9576c5757e4abb91347e3ba6037a5699fd791b
+commit c76337fd473fe88a573b4f0ede1e2e2e599f3958
 Author: Nicholas Laustrup <124007393+nicklaustrup@users.noreply.github.com>
-Date:   Fri Mar 6 15:39:53 2026 -0800
+Date:   Fri Mar 6 15:43:55 2026 -0800
 
-    Added top 5 cities query
+    Added top 5 customers query
 
- 4 files changed, 22 insertions(+), 13 deletions(-)
+ 4 files changed, 20 insertions(+), 15 deletions(-)
