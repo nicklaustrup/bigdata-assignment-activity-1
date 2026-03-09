@@ -1,7 +1,7 @@
-commit 8e49feb35795ee87a4020ca6e334d13791c2389c
+commit 41d3e185849cd1c4129110f910216311cf74d714
 Author: Nicholas Laustrup <124007393+nicklaustrup@users.noreply.github.com>
-Date:   Fri Mar 6 16:05:29 2026 -0800
+Date:   Fri Mar 6 17:10:35 2026 -0800
 
-    Added Hadoop vs Spark query
+    Finished project
 
- 4 files changed, 43 insertions(+), 16 deletions(-)
+ 5 files changed, 150 insertions(+), 57 deletions(-)
